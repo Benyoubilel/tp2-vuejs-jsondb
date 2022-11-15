@@ -1,5 +1,34 @@
 {
-    "user": [
-      { "id": 1, "nom": "ben youssef", "prenom": "bilel","email":"bilel@gmail.fr" }
-    ]
-  }
+  "user": [
+    {
+      "nom": "BEN YOUSSEF",
+      "prenom": "Hamza",
+      "email": "hamza@ben-youssef.Fr",
+      "id": 1
+    },
+    {
+      "nom": "ben youssef",
+      "prenom": "bilel",
+      "email": "bilel@ben-youssef.fr",
+      "id": 2
+    },
+    {
+      "nom": "BEN YOUSSEF",
+      "prenom": "Hamza",
+      "email": "hamza@ben-youssef.Fr",
+      "id": 4
+    },
+    {
+      "nom": "ben youssef",
+      "prenom": "bilel",
+      "email": "bilel@ben-youssef.fr",
+      "id": 5
+    },
+    {
+      "nom": "SeDomicilier",
+      "prenom": "fbx",
+      "email": "billing@sedomicilier.fr",
+      "id": 6
+    }
+  ]
+}

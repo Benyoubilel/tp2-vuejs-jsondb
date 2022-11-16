@@ -30,20 +30,21 @@
                                     <div class="modal-body">
                                         <label class="p-2">nom</label>
                                         <input type="text" class="form-control" name="nom" id="nom" v-model="nom"
-                                            placeholder="ali" >
+                                            placeholder="ali">
 
                                         <label class="p-2">prenom</label>
                                         <input type="text" class="form-control" name="prenom" id="prenom"
-                                            placeholder="benali"  v-model="prenom">
+                                            placeholder="benali" v-model="prenom">
                                         <label class="p-2">email</label>
                                         <input type="email" class="form-control" name="email" id="email"
-                                            placeholder="email@gmail.fr"  v-model="email">
+                                            placeholder="email@gmail.fr" v-model="email">
                                         <br>
-                                        <span class="error-feedback text-danger" >{{msg}}</span>
+                                        <span class="error-feedback text-danger">{{ msg }}</span>
                                         <div class="modal-footer m-2">
                                             <button type="button" class="btn btn-danger"
                                                 data-bs-dismiss="modal">Annuler</button>
-                                            <button type="submit" @click="addUsr() " class="btn btn-success" id="submit">Ajouter</button>
+                                            <button type="submit" @click="addUsr()" class="btn btn-success"
+                                                id="submit">Ajouter</button>
                                         </div>
                                     </div>
                                 </form>
@@ -75,7 +76,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="usr of user" :key="usr.id">
+                        <tr v-for="usr of user" v-bind:key="usr.id">
                             <td>
                                 {{ usr.id }}
                             </td>
@@ -91,12 +92,12 @@
                             <td>
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-success align-items-center" data-bs-toggle="modal"
-                                    data-bs-target="#editmodal{{usr.id}}">
+                                v-bind:data-bs-target=editbs+usr.id >
                                     <i class="fa fa-edit fa-x "></i>
                                 </button>
 
                                 <!-- editModal -->
-                                <div class="modal fade" id="editmodal{{usr.id}}" tabindex="-1"
+                                <div class="modal fade" v-bind:id=edit+usr.id  tabindex="-1"
                                     aria-labelledby="editmodalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
@@ -105,22 +106,22 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
-                                            <form class="form-floating" method="POST" action="" id="editform">
+                                            <form class="form-floating" @click.prevent id="editform">
                                                 <div class="modal-body">
                                                     <label class="p-2">id</label>
-                                                    <input type="text" value="{{usr.id}}" class="form-control" name="id"
+                                                    <input type="text" v-bind:value=usr.id class="form-control" name="id"
                                                         id="id" disabled>
                                                     <label class="p-2">nom</label>
-                                                    <input type="text" value="{{usr.nom}}" class="form-control"
+                                                    <input type="text" v-bind:value=usr.nom class="form-control"
                                                         name="nom" id="nom" required>
 
                                                     <label class="p-2">prenom</label>
-                                                    <input type="text" value="{{usr.prenom}}" class="form-control"
-                                                        name="nom" id="prenom" required>
+                                                    <input type="text" v-bind:value=usr.prenom class="form-control"
+                                                        name="nom" required>
 
 
                                                     <label class="p-2">email</label>
-                                                    <input type="email" value="{{usr.email}}" class="form-control"
+                                                    <input type="email" v-bind:value=usr.email class="form-control"
                                                         id="email" name="email">
                                                     <br>
 
@@ -141,16 +142,16 @@
                             <td>
 
                                 <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal">
+                                    v-bind:data-bs-target=rmbs+usr.id>
                                     <i class="fa fa-trash"></i>
                                 </button>
 
                                 <!-- Modal -->
 
-                                <div class="modal fade" id="exampleModal" tabindex="-1"
+                                <div class="modal fade" v-bind:id=rm+usr.id tabindex="-1"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
-                                        <form class="form-floating" method="POST" action="" id="editform">
+                                        <form class="form-floating"  v-bind:key="usr.id">
 
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -161,12 +162,14 @@
                                                 </div>
 
                                                 <div class="modal-body">
-                                                    voulez-vous supprimé cette epreuve!
+                                                    voulez-vous supprimé cette utilisteur!
+                                                    <input type="text" v-bind:value=usr.id class="form-control"
+                                                         disabled>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-danger"
                                                         data-bs-dismiss="modal">Annuler</button>
-                                                    <button type="submit" class="btn btn-outline-danger"><i
+                                                    <button type="submit" class="btn btn-outline-danger" v-bind:key="usr.id"  v-on:click="remusr(usr.id)"><i
                                                             class="fa fa-trash"></i></button>
                                                 </div>
                                             </div>
@@ -192,42 +195,48 @@
 import axios from "axios";
 
 import useValidate from "@vuelidate/core";
-import { required, email,minLength } from "@vuelidate/validators";
+import { required, email, minLength } from "@vuelidate/validators";
 
 export default {
-    name:'tab',
+    name: 'tab',
     data() {
         return {
             user: [{
-      "nom": "",
-      "prenom": "",
-      "email": "",
-      "id": "",
-    }
+                "nom": "",
+                "prenom": "",
+                "email": "",
+                "id": "",
+            }
             ],
             v$: useValidate(),
+            id:"",
             nom: "",
             prenom: "",
             email: "",
-            msg:"",
+            msg: "",
+            editbs:"#editmodal",
+            edit:"editmodal",
+            rmbs:"#delete",
+            rm:"delete",
+            value:"",
         };
     },
     validattion() {
         return {
-            nom: { required,minLength: minLength(3) },
-            prenom: { required,minLength: minLength(3)},
+            nom: { required, minLength: minLength(3) },
+            prenom: { required, minLength: minLength(3) },
             email: { required, email },
         };
     },
-    async mounted(){
-        let res= await axios.get('http://localhost:3000/user')
-        this.user=res.data;
+    async mounted() {
+        let res = await axios.get('http://localhost:3000/user');
+        this.user = res.data;
     },
     methods: {
-        async getusr(){
-        let res= await axios.get('http://localhost:3000/user')
-        this.user=res.data;
-    },
+        async getusr() {
+            let res = await axios.get('http://localhost:3000/user');
+            this.user = res.data;
+        },
         async addUsr() {
             this.v$.$validate();
             if (!this.v$.$error) {
@@ -237,14 +246,14 @@ export default {
                     prenom: this.prenom,
                     email: this.email,
                 });
-                if(result.status == 201){
-                     this.msg = "utilisateur ajouté";
-                    this.nom="";
-                    this.email="";
-                    this.prenom="";
+                if (result.status == 201) {
+                    this.msg = "utilisateur ajouté";
+                    this.nom = "";
+                    this.email = "";
+                    this.prenom = "";
                     this.getusr();
                 }
-                else{
+                else {
                     this.msg = "utilisateur non ajouté";
                 }
 
@@ -254,6 +263,18 @@ export default {
             }
 
         },
+        // async getUserById(){
+        //     this.id=this.$route.params.id;
+
+        // }
+        async remusr(id){
+        //    let resp= await axios.get('http://localhost:3000/user/1');
+        //    console.log(resp.data);
+           axios.delete('http://localhost:3000/user/'+id);
+                     this.getusr();
+        },
+      
+    
     },
 
 };

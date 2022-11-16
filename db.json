@@ -1,22 +1,22 @@
 {
   "user": [
     {
-      "nom": "BEN YOUSSEF",
-      "prenom": "Hamza",
-      "email": "hamza@ben-youssef.Fr",
-      "id": 4
+      "nom": "ben youssef",
+      "prenom": "bilel",
+      "email": "bilel@ben-youssef.fr",
+      "id": 2
     },
     {
       "nom": "ben youssef",
       "prenom": "bilel",
       "email": "bilel@ben-youssef.fr",
-      "id": 5
+      "id": 3
     },
     {
-      "nom": "SeDomicilier",
-      "prenom": "fbx",
-      "email": "billing@sedomicilier.fr",
-      "id": 6
+      "nom": "BEN YOUSSEF",
+      "prenom": "Hamza",
+      "email": "hamza@ben-youssef.Fr",
+      "id": 4
     }
   ]
 }

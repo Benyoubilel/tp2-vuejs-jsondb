@@ -1,22 +1,22 @@
 {
   "user": [
     {
-      "nom": "ben youssef",
-      "prenom": "bilel",
-      "email": "bilel@ben-youssef.fr",
-      "id": 2
+      "nom": "Hamza",
+      "prenom": "BEN YOUSSEF",
+      "email": "hamza@ben-youssef.Fr",
+      "id": 1
     },
     {
       "nom": "ben youssef",
-      "prenom": "bilel",
+      "prenom": "c",
       "email": "bilel@ben-youssef.fr",
-      "id": 3
+      "id": 2
     },
     {
       "nom": "BEN YOUSSEF",
       "prenom": "Hamza",
       "email": "hamza@ben-youssef.Fr",
-      "id": 4
+      "id": 3
     }
   ]
 }

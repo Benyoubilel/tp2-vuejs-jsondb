@@ -106,7 +106,7 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
-                                            <form class="form-floating" id="editform" 
+                                            <form class="form-floating" id="editform" @click.prevent
                                                 v-bind:key="usr.id">
                                                 <div class="modal-body">
                                                     <label class="p-2">id</label>

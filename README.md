@@ -1,7 +1,8 @@
 info:
 
 vuejs 3
-npm version
+npm version:
+nodejs version:
 
 
 Installation

@@ -1,7 +1,9 @@
 info:
 
 vuejs 3
+
 npm version: 8.13.1
+
 nodejs version: 16.15.1
 
 

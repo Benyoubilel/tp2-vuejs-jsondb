@@ -1,8 +1,8 @@
 info:
 
 vuejs 3
-npm version:
-nodejs version:
+npm version: 8.13.1
+nodejs version: 16.15.1
 
 
 Installation
